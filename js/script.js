@@ -6,8 +6,8 @@ const GeneratedBtn = e => {
   clearUI(qr);
   const text = document.getElementById("text").value;
 
-  if (text === "") {
-    alert("Please enter a text");
+  if ((text === "")) {
+    alert("Please enter a text or url");
   } else {
     showSpinner();
     setTimeout(() => {
@@ -15,7 +15,7 @@ const GeneratedBtn = e => {
       generateQr(text);
       setTimeout(() => {
         const saveURL = qr.querySelector("img").src;
-        createSavebtn(saveURL);
+        createSavebtn(saveURL,text);
       }, 50);
     }, 1000);
   }
@@ -25,19 +25,19 @@ const generateQr = text => {
   const qrcode = new QRCode("qrcode", {
     text: text,
     width: 200,
-    height: 200,
+    height: 200
   });
 };
 
 const createSavebtn = (saveURL, text) => {
-    var downloadLink = document.createElement("a");
-    downloadLink.id = "download-link";
-    downloadLink.classList = "qr-btn-2";
-    downloadLink.href = saveURL;
-    downloadLink.download = "qrcode";
-    downloadLink.innerHTML = "Download";
-    document.getElementById("qr-main-2").appendChild(downloadLink);
-  };
+  var downloadLink = document.createElement("a");
+  downloadLink.id = "download-link";
+  downloadLink.classList = "qr-btn-2";
+  downloadLink.href = saveURL;
+  downloadLink.download = `${text} QRcode Image`;
+  downloadLink.innerHTML = "Download";
+  document.getElementById("qr-main-2").appendChild(downloadLink);
+};
 
 const showSpinner = () => {
   document.getElementById("spinner").style.display = "block";
@@ -58,3 +58,4 @@ const clearUI = qr => {
 hideSpinner();
 
 form.addEventListener("submit", GeneratedBtn);
+
