@@ -15,7 +15,7 @@ function GenerateLinkQrBtn(e) {
       GenerateLinkQrCode(url);
       setTimeout(() => {
         const saveURL = qr.querySelector("img").src;
-        createSavebtn(saveURL, text);
+        createSavebtn(saveURL, url);
       }, 50);
     }, 1000);
   }
@@ -29,12 +29,12 @@ function GenerateLinkQrCode(url) {
   });
 }
 
-const createSavebtn = (saveURL, text) => {
+const createSavebtn = (saveURL, url) => {
   var downloadLink = document.createElement("a");
   downloadLink.id = "download-link";
   downloadLink.classList = "qr-btn-2";
   downloadLink.href = saveURL;
-  downloadLink.download = `${text} QRcode Image`;
+  downloadLink.download = `Url QRcode Image`;
   downloadLink.innerHTML = "Download";
   document.getElementById("qr-main-2").appendChild(downloadLink);
 };
@@ -48,6 +48,11 @@ const hideSpinner = () => {
 
 const clearUI = qr => {
   qr.innerHTML = "";
+  const download_link = document.getElementById("download-link");
+
+  if (download_link) {
+    download_link.remove();
+  }
 };
 hideSpinner();
 
