@@ -7,7 +7,7 @@ const GeneratedBtn = e => {
   const text = document.getElementById("text").value;
 
   if ((text === "")) {
-    alert("Please enter a text or url");
+    alert("Please enter a text");
   } else {
     showSpinner();
     setTimeout(() => {
