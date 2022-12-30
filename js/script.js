@@ -59,3 +59,8 @@ hideSpinner();
 
 form.addEventListener("submit", GeneratedBtn);
 
+
+// Form 
+
+
+
