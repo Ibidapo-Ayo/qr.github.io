@@ -326,6 +326,10 @@ html {
 		background-color: #fff !important;
 		border-bottom: 8PX solid #FEC200;
 		margin-left: -20px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 	}
 	.ml{
 		margin-left: -50px;
