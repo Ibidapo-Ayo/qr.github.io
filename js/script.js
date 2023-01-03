@@ -6,20 +6,23 @@ const GeneratedBtn = e => {
   clearUI(qr);
   const text = document.getElementById("text").value;
 
-  if ((text === "")) {
+  if (text === "") {
     alert("Please enter a text");
   } else {
     showSpinner();
     setTimeout(() => {
       hideSpinner();
       generateQr(text);
+     
       setTimeout(() => {
         const saveURL = qr.querySelector("img").src;
-        createSavebtn(saveURL,text);
+        createSavebtn(saveURL, text);
       }, 50);
     }, 1000);
   }
 };
+
+
 
 const generateQr = text => {
   const qrcode = new QRCode("qrcode", {
@@ -60,7 +63,5 @@ hideSpinner();
 form.addEventListener("submit", GeneratedBtn);
 
 
-// Form 
 
-
-
+// Form
